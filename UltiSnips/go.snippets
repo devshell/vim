@@ -1,0 +1,36 @@
+snippet blr
+package main
+
+import (
+	"fmt"
+)
+
+func main(){
+	$0
+}
+endsnippet
+
+snippet ife
+if ${1:err} != nil { log.Println("$2", $1)$0 }
+endsnippet
+
+snippet fori
+for ${1:i} := 0; $1 < ${2:10}; $1++ {
+  $0
+}
+endsnippet
+
+snippet test
+func (t *testSuite) Test${1:Case}() {
+	t.Equal(${2:expected}, ${3:actual})
+}
+$0
+endsnippet
+
+snippet lp
+log.Println($0)
+endsnippet
+
+snippet fp
+fmt.Println($0)
+endsnippet
