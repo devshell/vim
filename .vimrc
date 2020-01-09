@@ -7,19 +7,18 @@
 	execute 'set runtimepath+=' . s:path
 	runtime autoload/vundle.vim
 	if ! exists('*vundle#rc') &&
-	\  executable('git') &&
-	\  confirm('Install vundle?', "&Yes\n&No", 2, 'Qusetion') == 1 &&
-	\  mkdir(s:path, 'p')
-	    echo 'Cloning vundle...'
+	\executable('git') &&
+	\confirm('Install vundle?', "&Yes\n&No", 2, 'Qusetion') == 1 &&
+	\mkdir(s:path, 'p')
+		echo 'Cloning vundle...'
 	    execute '! git clone https://github.com/gmarik/vundle.git' s:path
 	    if v:shell_error
 	      echohl ErrorMsg | echomsg 'Cannot clone ' . vundle_repo . ' (' . s:path . ' may be not empty)' | echohl None
 	    else
 	      autocmd VimEnter * PluginInstall
 	    endif
-	  endif
-	else
-	  echomsg 'Failed to install Vundle automatically.  Please install it yourself.'
+	"else
+	"  echomsg 'Failed to install Vundle automatically.  Please install it yourself.'
 	endif
 
 "==========================================================================
@@ -46,7 +45,7 @@
 	" "call vundle#begin('~/some/path/here')
 	"
 	" " let Vundle manage Vundle, required
-	Plugin 'gmarik/Vundle.vim'
+	"Plugin 'gmarik/Vundle.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'buftabs'
 	Plugin 'preservim/nerdcommenter'
