@@ -24,6 +24,8 @@
 	" " let Vundle manage Vundle, required
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'scrooloose/nerdtree'
+	Plugin 'buftabs'
+	Plugin 'preservim/nerdcommenter'
 "==========================================================================
 " EDITOR PREFERENCES
 "==========================================================================
@@ -55,7 +57,8 @@
 	set smartcase															"Case-sensitive only if there is a capital letter in the expression.
 	set incsearch															"Do incremental searching.
 	set hlsearch															"Highlight searches.
-	set listchars=tab:»\ ,trail:«											"Set whitespace characters.
+	"set listchars=tab:»\ ,trail:«											"Set whitespace characters.
+	set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 	set list																"Turn whitespace characters on. Disables linebreak.
 	set fillchars=vert:\ ,fold:-,diff:-										"Set the characters used in ui elements.
 
@@ -298,3 +301,19 @@
 	let g:go_play_open_browser = 1											"Opening browser after posting your snippet to play.golang.org.
 	let g:go_auto_type_info = 0												"Display auto type information.
 
+	" Enable the list of buffers
+	let g:airline#extensions#tabline#enabled = 1
+
+	" Show just the filename
+	let g:airline#extensions#tabline#fnamemod = ':t'
+
+	set hidden
+	nnoremap <S-right> :bnext<CR>
+	nnoremap <S-left> :bprev<CR>
+
+	autocmd VimEnter * Tagbar
+	autocmd VimEnter * NERDTree
+	autocmd VimEnter * wincmd p
+
+	let mapleader=","
+	set timeout timeoutlen=1500
