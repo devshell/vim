@@ -1,6 +1,36 @@
-" Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
-    endif
-" }
+" FORMATTERS
+au FileType javascript setlocal formatprg=prettier
+au FileType javascript.jsx setlocal formatprg=prettier
+au FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+au FileType html setlocal formatprg=js-beautify\ --type\ html
+au FileType scss setlocal formatprg=prettier\ --parser\ css
+au FileType css setlocal formatprg=prettier\ --parser\ css
 
+
+nnoremap <F5> mzgggqG`z
+
+" TYPESCRIPT
+let g:typescript_indent_disable = 1
+
+autocmd FileType typescript :set makeprg=tsc
+
+" AUTO LINTERS
+let g:ale_linters = {
+\   'python': ['flake8', 'pylint'],
+\   'javascript': ['eslint'],
+\   'vue': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\    'javascript': ['eslint'],
+\    'typescript': ['prettier', 'tslint'],
+\    'vue': ['eslint'],
+\    'scss': ['prettier'],
+\    'html': ['prettier'],
+\    'reason': ['refmt'],
+\}
+
+let g:ale_fix_on_save = 1
+
+nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
+nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error"]"

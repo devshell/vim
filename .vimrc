@@ -44,12 +44,12 @@
 	" " alternatively, pass a path where Vundle should install plugins
 	" "call vundle#begin('~/some/path/here')
 	"
-	" " let Vundle manage Vundle, required
-	"Plugin 'gmarik/Vundle.vim'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'buftabs'
-	Plugin 'preservim/nerdcommenter'
-	Plugin 'majutsushi/tagbar'
+	
+	" Use local before if available {
+	if filereadable(expand("~/.vimrc.plugins"))
+		source ~/.vimrc.plugins
+	endif
+	" }
 	
 "==========================================================================
 " EDITOR PREFERENCES
@@ -342,3 +342,10 @@
 
 	let mapleader=","
 	set timeout timeoutlen=1500
+
+	" Use local before if available {
+	if filereadable(expand("~/.vimrc.local"))
+		source ~/.vimrc.local
+	endif
+	" }
+	
